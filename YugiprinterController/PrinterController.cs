@@ -433,10 +433,12 @@ namespace YugiprinterController
                 }
 
                 MessageBox.Show("Xuất file thành công!\nĐường dẫn file tại " + userPath + "\\" + exportFileName, "Thành công");
+                Application.Exit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                Application.Exit();
             }
         }
     }

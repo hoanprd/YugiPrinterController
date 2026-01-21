@@ -32,10 +32,15 @@
             // 
             // PrinterController
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(148, 29);
+            this.ControlBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PrinterController";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.PrinterController_Load);
             this.ResumeLayout(false);
 
