@@ -40,27 +40,37 @@ namespace YugiprinterController
 
             // 1. Xác định đường dẫn file
             string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string folderPath = Path.Combine(myDocPath, "PRD Team", "YugipriterSetting");
             string filePath = Path.Combine(myDocPath, "PRD Team", "YugipriterSetting", "settingDeckString.txt");
 
             try
             {
-                // 2.Kiểm tra và đọc file vào tempArray
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                if (!File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath, string.Empty);
+                }
+
                 if (File.Exists(filePath))
                 {
-                    // Đọc mỗi dòng trong file là 1 phần tử của mảng
                     tempArray = File.ReadAllLines(filePath);
 
-                    // Nếu file trống, báo lỗi hoặc thoát
                     if (tempArray.Length == 0)
                     {
                         MessageBox.Show("File dữ liệu trống!", "Thông báo");
-                        return;
+                        Application.Exit();
+                        //return;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Không tìm thấy file tại: " + filePath, "Lỗi file");
-                    return;
+                    Application.Exit();
+                    //return;
                 }
 
                 Document document = new Document();

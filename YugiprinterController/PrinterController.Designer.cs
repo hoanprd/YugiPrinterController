@@ -35,7 +35,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(148, 29);
-            this.ControlBox = false;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PrinterController";
             this.ShowIcon = false;
