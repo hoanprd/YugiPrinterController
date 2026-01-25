@@ -18,6 +18,8 @@ namespace YugiprinterController
 {
     public partial class PrinterController: Form
     {
+        //in kh sat: width = 81.9899944414f, height = 243.764172336f;
+        //in sat: width = 81.9899944414f, height = 243.764172336f;
         public float x = -35f, y = -50f, width = 81.9899944414f, height = 243.764172336f;
 
         private string pageSize = "0", pageSide = "0", fileFormat = "0", exportFileName = "TestNew.docx";
@@ -34,6 +36,32 @@ namespace YugiprinterController
 
         private void PrinterController_Load(object sender, EventArgs e)
         {
+            var settingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                "PRD Team", "YugipriterSetting", "appSetting.txt");
+            var appSettings = AppSetting.Load(settingsFile);
+
+            string selectedDownFolder = appSettings.SelectedFolderPath;
+            bool printClose = appSettings.PrintCloseToCard;
+
+            if (printClose)
+            {
+                x = -35f;
+                y = -50f;
+                width = 81.9899944414f;
+                height = 243.764172336f;
+                horizontalValue = 167.5f;
+                verticalValue = 243.8f;
+            }
+            else
+            {
+                x = -35f;
+                y = -50f;
+                width = 81.9899944414f;
+                height = 243.764172336f;
+                horizontalValue = 180;
+                verticalValue = 250;
+            }
+
             horizontalIndex = 0;
             verticalIndex = 0;
             bool a3PageColum = false, sideBackground = false;
@@ -104,7 +132,7 @@ namespace YugiprinterController
                                 verticalIndex = 0;
                             }
 
-                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile($"C:\\Users\\DELL\\Desktop\\CardImageData\\{tempArray[i] + ".jpg"}"));
+                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile(selectedDownFolder + "/" + tempArray[i] + ".jpg"));
                             picture.HorizontalPosition = x + (horizontalValue * horizontalIndex);
                             picture.VerticalPosition = y + (verticalValue * verticalIndex);
 
@@ -160,7 +188,7 @@ namespace YugiprinterController
                                 verticalIndex = 0;
                             }
 
-                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile($"C:\\Users\\DELL\\Desktop\\CardImageData\\{tempArray[i] + ".jpg"}"));
+                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile(selectedDownFolder + "/" + tempArray[i] + ".jpg"));
                             picture.HorizontalPosition = x + (horizontalValue * horizontalIndex);
                             picture.VerticalPosition = y + (verticalValue * verticalIndex);
 
@@ -191,7 +219,7 @@ namespace YugiprinterController
                                 a3PageColum = false;
                             }
 
-                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile($"C:\\Users\\DELL\\Desktop\\CardImageData\\{tempArray[i] + ".jpg"}"));
+                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile(selectedDownFolder + "/" + tempArray[i] + ".jpg"));
                             picture.HorizontalPosition = x + (horizontalValue * horizontalIndex);
                             picture.VerticalPosition = y + 70 + (verticalValue * verticalIndex);
 
@@ -292,7 +320,7 @@ namespace YugiprinterController
                                 verticalIndex = 0;
                             }
 
-                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile($"C:\\Users\\DELL\\Desktop\\CardImageData\\{tempArray[i] + ".jpg"}"));
+                            DocPicture picture = section.Paragraphs[0].AppendPicture(Image.FromFile(selectedDownFolder + "/" + tempArray[i] + ".jpg"));
                             picture.HorizontalPosition = x + (horizontalValue * horizontalIndex);
                             picture.VerticalPosition = y + 70 + (verticalValue * verticalIndex);
 

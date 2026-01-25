@@ -24,3 +24,4 @@ E:\PostGitHub\YugiPrinterController\YugiprinterController\bin\Debug\System.Runti
 E:\PostGitHub\YugiPrinterController\YugiprinterController\obj\Debug\Yugiprin.B1157C6B.Up2Date
 E:\PostGitHub\YugiPrinterController\YugiprinterController\obj\Debug\YugiprinterController.exe
 E:\PostGitHub\YugiPrinterController\YugiprinterController\obj\Debug\YugiprinterController.pdb
+E:\PostGitHub\YugiPrinterController\YugiprinterController\obj\Debug\YugiprinterController.exe.config
