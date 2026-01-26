@@ -18,11 +18,10 @@ namespace YugiprinterController
 {
     public partial class PrinterController: Form
     {
-        //in kh sat: width = 81.9899944414f, height = 243.764172336f;
-        //in sat: width = 81.9899944414f, height = 243.764172336f;
-        public float x = -35f, y = -50f, width = 81.9899944414f, height = 243.764172336f;
+        //public float x = -35f, y = -50f, width = 81.9899944414f, height = 243.764172336f;
+        public float x, y, width, height;
 
-        private string pageSize = "0", pageSide = "0", fileFormat = "0", exportFileName = "TestNew.docx";
+        private string pageSize = "0", pageSide = "0", fileFormat = "0", exportFileName = "PRD.docx";
         private string[] tempArray;
 
         int horizontalIndex = 0, verticalIndex = 0;
@@ -66,7 +65,6 @@ namespace YugiprinterController
             verticalIndex = 0;
             bool a3PageColum = false, sideBackground = false;
 
-            // 1. Xác định đường dẫn file
             string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string folderPath = Path.Combine(myDocPath, "PRD Team", "YugipriterSetting");
             string filePath = Path.Combine(myDocPath, "PRD Team", "YugipriterSetting", "settingDeckString.txt");
@@ -125,7 +123,13 @@ namespace YugiprinterController
                     {
                         if (pageSide == "0")
                         {
-                            if ((i == 9 || i == 18 || i == 27 || i == 36 || i == 45 || i == 54 || i == 63 || i == 72 || i == 81) && i != 0)
+                            /*if ((i == 9 || i == 18 || i == 27 || i == 36 || i == 45 || i == 54 || i == 63 || i == 72 || i == 81) && i != 0)
+                            {
+                                Paragraph paragraph = section.Paragraphs[0];
+                                paragraph.AppendBreak(BreakType.PageBreak);
+                                verticalIndex = 0;
+                            }*/
+                            if (i%9 == 0 && i != 0)
                             {
                                 Paragraph paragraph = section.Paragraphs[0];
                                 paragraph.AppendBreak(BreakType.PageBreak);
@@ -151,7 +155,7 @@ namespace YugiprinterController
                         }
                         else if (pageSide == "1")
                         {
-                            if ((i == 9 || i == 18 || i == 27 || i == 36 || i == 45 || i == 54 || i == 63 || i == 72 || i == 81) && i != 0)
+                            if (i % 9 == 0 && i != 0)
                             {
                                 Paragraph paragraph = section.Paragraphs[0];
                                 paragraph.AppendBreak(BreakType.PageBreak);
@@ -210,7 +214,15 @@ namespace YugiprinterController
                     {
                         if (pageSide == "0")
                         {
-                            if ((i == 18 || i == 36 || i == 54 || i == 72) && i != 0)
+                            /*if ((i == 18 || i == 36 || i == 54 || i == 72) && i != 0)
+                            {
+                                Paragraph paragraph = section.Paragraphs[0];
+                                paragraph.AppendBreak(BreakType.PageBreak);
+                                horizontalIndex = 0;
+                                verticalIndex = 0;
+                                a3PageColum = false;
+                            }*/
+                            if (i%18 == 0 && i != 0)
                             {
                                 Paragraph paragraph = section.Paragraphs[0];
                                 paragraph.AppendBreak(BreakType.PageBreak);
@@ -259,7 +271,7 @@ namespace YugiprinterController
                         }
                         else if (pageSide == "1")
                         {
-                            if ((i == 18 || i == 36 || i == 54 || i == 72) && i != 0)
+                            if (i % 18 == 0 && i != 0)
                             {
                                 Paragraph paragraph = section.Paragraphs[0];
                                 paragraph.AppendBreak(BreakType.PageBreak);
